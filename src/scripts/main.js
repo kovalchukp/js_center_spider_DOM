@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  const wallComputedPos = getComputedStyle(wall).position;
+
+  if (wallComputedPos === 'static') {
+    wall.style.position = 'relative';
+  }
+
   spider.style.position = 'absolute';
 
   function centerSpider() {
@@ -19,14 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     spider.style.top = `${topPosition}px`;
   }
 
-  if(spider.complete){
+  if (spider.complete) {
     centerSpider();
+
     return;
   }
 
-  window.addEventListener('load', centerSpider);
+  spider.addEventListener('load', centerSpider);
 
-  window.addEventListener('resize', () => {
-    centerSpider();
-  });
+  window.addEventListener('resize', centerSpider);
 });
