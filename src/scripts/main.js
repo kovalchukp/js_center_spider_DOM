@@ -2,13 +2,34 @@
 
 // write code here
 document.addEventListener('DOMContentLoaded', () => {
-  const spider = document.querySelector('.spider');
   const wall = document.querySelector('.wall');
+  const spider = document.querySelector('.spider');
 
-  const leftPosition = (wall.clientWidth - spider.offsetWidth) / 2;
+  if (!wall || !spider) {
+    return;
+  }
 
-  const topPosition = (wall.clientHeight - spider.offsetHeight) / 2;
+  if (getComputedStyle(wall).position === 'static') {
+    wall.style.position = 'relative';
+  }
 
-  spider.style.left = `${leftPosition}px`;
-  spider.style.top = `${topPosition}px`;
+  spider.style.position = 'absolute';
+
+  function centerSpider() {
+    const leftPosition = (wall.clientWidth - spider.offsetWidth) / 2;
+    const topPosition = (wall.clientHeight - spider.offsetHeight) / 2;
+
+    spider.style.left = `${leftPosition}px`;
+    spider.style.top = `${topPosition}px`;
+  }
+
+  centerSpider();
+
+  spider.addEventListener('load', centerSpider);
+
+  window.addEventListener('load', centerSpider);
+
+  window.addEventListener('resize', () => {
+    centerSpider();
+  });
 });
