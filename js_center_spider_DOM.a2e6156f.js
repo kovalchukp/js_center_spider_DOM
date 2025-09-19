@@ -1,0 +1,2 @@
+"use strict";document.addEventListener("DOMContentLoaded",function(){var t=function(){var t=(e.clientWidth-n.offsetWidth)/2,o=(e.clientHeight-n.offsetHeight)/2;n.style.left="".concat(t,"px"),n.style.top="".concat(o,"px")},e=document.querySelector(".wall"),n=document.querySelector(".spider");e&&n&&("static"===getComputedStyle(e).position&&(e.style.position="relative"),n.style.position="absolute",t(),n.addEventListener("load",t),window.addEventListener("load",t),window.addEventListener("resize",function(){t()}))});
+//# sourceMappingURL=js_center_spider_DOM.a2e6156f.js.map
