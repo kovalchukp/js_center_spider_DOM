@@ -9,10 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  if (getComputedStyle(wall).position === 'static') {
-    wall.style.position = 'relative';
-  }
-
   spider.style.position = 'absolute';
 
   function centerSpider() {
@@ -23,9 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     spider.style.top = `${topPosition}px`;
   }
 
-  centerSpider();
-
-  spider.addEventListener('load', centerSpider);
+  if(spider.complete){
+    centerSpider();
+    return;
+  }
 
   window.addEventListener('load', centerSpider);
 
